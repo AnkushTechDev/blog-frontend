@@ -2,7 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
 
+## Login Page
+
 ![](Login.png)
+
+## Dashboard Page
+
+![](Dashboard.png)
+
+## Post Edit Page
+
+![](Post-Edit.png)
 
 ## Development server
 
