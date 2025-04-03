@@ -1,0 +1,73 @@
+ <!-- HEADER -->
+ <header id="main-header" class="py-2 bg-danger text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1><i class="fas fa-users"></i> Users</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ACTIONS -->
+<section id="actions" class="py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ml-auto">
+                <div class="input-group">
+                    <input type="text" class="form-control" [(ngModel)]=searchValue>
+                    <div class="input-group-append">
+                        <button [disabled]="!searchValue" class="btn btn-danger" (click)="search()">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- USERS -->
+<section *ngIf="!notFound" id="users" class="mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Users</h4>
+                    </div>
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of usersList; let i = index" >
+                                <td [textContent]='i + 1 + ((page - 1) * pageSize)'></td>
+                                <td [textContent]="user.name"></td>
+                                <td [textContent]="user.email"><td>
+                                    <!-- <a routerLink="{{ user.id }}/details" class="btn btn-secondary"> -->
+                                    <button (click)="onNavigate(user.id)" class="btn btn-secondary">
+                                    <i class="fas fa-angle-double-right"></i> Details
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- PAGINATION -->
+              <div class="d-flex justify-content-center mt-4" *ngIf = "show">
+                <ngb-pagination [collectionSize]="(showUsers) ? users.length : usersResult.length" (pageChange)="onGetPage($event)" [pageSize]= "pageSize" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div *ngIf="notFound" class="container">
+  <div class="col">
+    <h1 class="display-5">User not found!</h1>
+  </div>
+</div>
