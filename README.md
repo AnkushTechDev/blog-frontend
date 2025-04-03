@@ -1,8 +1,8 @@
-# BlogenApp
+# Blog Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
 
-![](src/img/screenshot.PNG)
+![](Login.png)
 
 ## Development server
 
